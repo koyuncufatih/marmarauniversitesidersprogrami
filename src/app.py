@@ -15,7 +15,7 @@ class App(Tk):
         """Initialize the main window of the application."""
         super().__init__()
         self.title("Ana Sayfa")
-        self.state("zoomed")
+        self.state("normal")
         self.iconbitmap("icon.ico")
         self.columnconfigure(0, weight=1)
         self.__create_widgets()
