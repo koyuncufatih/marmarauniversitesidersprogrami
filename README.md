@@ -1,15 +1,11 @@
-# marmarauniversitesidersprogrami
-Marmara Üniversitesi Ders Programı Oluşturma Uygulaması
+# Marmara University Timetable Generator
+You can create your own time-table before system lets you within just the BYS's XLSX file you have downloaded.
 
-<h3>&#x2022; Programı kullanmak için Marmara BYS(Bilgi Yönetim Sistemi)'den sunulan dersleri excel (xlxs) formatında kaydedip uygulamada Dosya->Aç sekmesinden seçmeniz yeterli.
+* Download the XLSX file from BYS from the "Listed Courses" page.
+* Run the program.
+* Select the XLSX file you have downloaded via menu bar.
+* Select the courses you want to take from the table and click "Ekle" button.
+* Select the courses you want to remove from the table and click "Çıkar" button.
 
-<h3>&#x2022; Tabloda beliren derslerden almak istediğiniz dersleri seçtikten sonra EKLE butonuna basarak ders programına ekleyebilirsiniz.
-
-<h3>&#x2022; Ders programından çıkarmak istediğiniz dersleri tabloda beliren derslerden seçtikten sonra ÇIKAR butonuna basarak ders programından çıkartabilirsiniz.
-
-</p> </p>
-</p> </p>
-</p> </p>
-</p> </p>
-
+## Screenshot
 ![programçıktısı](https://user-images.githubusercontent.com/122054311/216093856-97bb6d21-5fe9-4f73-8b5a-e7bb6ae24ae0.PNG)
