@@ -22,7 +22,7 @@ class MenuBar(Menu):
     def open_file(self):
         """Opens the file and creates a table."""
         filename = filedialog.askopenfilename(
-            title="Dosya Aç", filetype=(("xlxs files", ".*xlsx"), ("All Files", "*."))
+            title="Dosya Aç", filetypes=(("xlxs files", ".*xlsx"), ("All Files", "*."))
         )
         if filename:
             try:
