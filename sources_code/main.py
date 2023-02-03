@@ -1,5 +1,5 @@
-#created by Fatih Koyuncu
-#fatihkoyuncu99@gmail.com
+# created by Fatih Koyuncu
+# fatihkoyuncu99@gmail.com
 
 from tkinter import *
 from tkinter import ttk
@@ -18,11 +18,12 @@ class MenuBar(Menu):
 
         menubar = Menu(self, tearoff=0)
         self.add_cascade(label="Dosya", menu=menubar)
-        menubar.add_command(label='Aç', command=self.open_file)
+        menubar.add_command(label="Aç", command=self.open_file)
 
     def open_file(self):
-        filename = filedialog.askopenfilename(title="Dosya Aç",
-                                              filetype=(("xlxs files", ".*xlsx"), ("All Files", "*.")))
+        filename = filedialog.askopenfilename(
+            title="Dosya Aç", filetype=(("xlxs files", ".*xlsx"), ("All Files", "*."))
+        )
         if filename:
             try:
                 filename = r"{}".format(filename)
@@ -41,8 +42,20 @@ class MenuBar(Menu):
                 self.ltf.tree.column(col, anchor=CENTER, width=35)
                 self.ltf.tree.heading(col, text=col)
 
-        df_rows = df[
-            ['Ders Kodu', 'Ders Adı', 'Öğretim Elemanı', 'Kredi', 'Kontenjan', 'Gün Saat Derslik']].to_numpy().tolist()
+        df_rows = (
+            df[
+                [
+                    "Ders Kodu",
+                    "Ders Adı",
+                    "Öğretim Elemanı",
+                    "Kredi",
+                    "Kontenjan",
+                    "Gün Saat Derslik",
+                ]
+            ]
+            .to_numpy()
+            .tolist()
+        )
         for row in df_rows:
             self.ltf.tree.insert("", "end", values=row)
 
@@ -60,32 +73,90 @@ class ProgramTableFrame(Frame):
 
         self.b = {}
         days = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma"]
-        hours = ["08.30", "09.30", "10.30", "11.30", "Break", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00",
-                 "19.00"]
+        hours = [
+            "08.30",
+            "09.30",
+            "10.30",
+            "11.30",
+            "Break",
+            "13.00",
+            "14.00",
+            "15.00",
+            "16.00",
+            "17.00",
+            "18.00",
+            "19.00",
+        ]
 
         for i in range(len(hours) + 1):
             for j in range(len(days) + 1):
                 if j == 0 and i == 0:
-                    self.b['labelsNo' + str(i) + str(j)] = Label(self, text=" ", borderwidth=1, anchor=CENTER,
-                                                                 relief=SOLID, width=30, height=2)
-                    self.b['labelsNo' + str(i) + str(j)].grid(row=i, column=j, sticky=EW)
+                    self.b["labelsNo" + str(i) + str(j)] = Label(
+                        self,
+                        text=" ",
+                        borderwidth=1,
+                        anchor=CENTER,
+                        relief=SOLID,
+                        width=30,
+                        height=2,
+                    )
+                    self.b["labelsNo" + str(i) + str(j)].grid(
+                        row=i, column=j, sticky=EW
+                    )
                 elif j == 0 and i != 0:
-                    self.b['labelsNo' + str(i) + str(j)] = Label(self, text=hours[i - 1], borderwidth=1,
-                                                                 anchor=CENTER, relief=SOLID, width=30, height=2)
-                    self.b['labelsNo' + str(i) + str(j)].grid(row=i, column=j, sticky=EW)
+                    self.b["labelsNo" + str(i) + str(j)] = Label(
+                        self,
+                        text=hours[i - 1],
+                        borderwidth=1,
+                        anchor=CENTER,
+                        relief=SOLID,
+                        width=30,
+                        height=2,
+                    )
+                    self.b["labelsNo" + str(i) + str(j)].grid(
+                        row=i, column=j, sticky=EW
+                    )
                 elif j != 0 and i == 0:
-                    self.b['labelsNo' + str(i) + str(j)] = Label(self, text=days[j - 1], borderwidth=1,
-                                                                 anchor=CENTER, relief=SOLID, width=30, height=2)
-                    self.b['labelsNo' + str(i) + str(j)].grid(row=i, column=j, sticky=EW)
+                    self.b["labelsNo" + str(i) + str(j)] = Label(
+                        self,
+                        text=days[j - 1],
+                        borderwidth=1,
+                        anchor=CENTER,
+                        relief=SOLID,
+                        width=30,
+                        height=2,
+                    )
+                    self.b["labelsNo" + str(i) + str(j)].grid(
+                        row=i, column=j, sticky=EW
+                    )
                 elif i == 5:
-                    self.b['labelsNo' + str(i) + str(j)] = Label(self, text=hours[i - 1], borderwidth=1,
-                                                                 anchor=CENTER, relief=SOLID, width=30, height=2,
-                                                                 background="black", foreground="white")
-                    self.b['labelsNo' + str(i) + str(j)].grid(row=i, column=j, sticky=EW)
+                    self.b["labelsNo" + str(i) + str(j)] = Label(
+                        self,
+                        text=hours[i - 1],
+                        borderwidth=1,
+                        anchor=CENTER,
+                        relief=SOLID,
+                        width=30,
+                        height=2,
+                        background="black",
+                        foreground="white",
+                    )
+                    self.b["labelsNo" + str(i) + str(j)].grid(
+                        row=i, column=j, sticky=EW
+                    )
                 else:
-                    self.b['labelsNo' + str(i) + str(j)] = Label(self, text=" ", borderwidth=1, anchor=CENTER,
-                                                                 relief=SOLID, width=30, height=2)
-                    self.b['labelsNo' + str(i) + str(j)].grid(row=i, column=j, sticky=EW)
+                    self.b["labelsNo" + str(i) + str(j)] = Label(
+                        self,
+                        text=" ",
+                        borderwidth=1,
+                        anchor=CENTER,
+                        relief=SOLID,
+                        width=30,
+                        height=2,
+                    )
+                    self.b["labelsNo" + str(i) + str(j)].grid(
+                        row=i, column=j, sticky=EW
+                    )
 
                 globals().update(self.b)
 
@@ -95,8 +166,15 @@ class LessonsTableFrame(Frame):
         super().__init__(container)
         self.columnconfigure(0, weight=1)
         self.grid(row=0, column=0, sticky=EW, padx=10, pady=10)
-        self.columns = ("Ders Kodu", "Ders Adı", "Öğretim Elemani", "Kredi", "Kontenjan", "Gün Saat Derslik")
-        self.tree = ttk.Treeview(self, columns=self.columns, show='headings')
+        self.columns = (
+            "Ders Kodu",
+            "Ders Adı",
+            "Öğretim Elemani",
+            "Kredi",
+            "Kontenjan",
+            "Gün Saat Derslik",
+        )
+        self.tree = ttk.Treeview(self, columns=self.columns, show="headings")
 
         for col in self.columns:
             self.tree.column(col, anchor=CENTER)
@@ -161,7 +239,7 @@ class ButtonFrame(Frame):
 
     def add(self):
         selected = self.ltf.tree.focus()
-        values = self.ltf.tree.item(selected, 'values')
+        values = self.ltf.tree.item(selected, "values")
         count = 0
         color = "%06x" % random.randint(0, 0xFFFFFF)
         color = "#" + color
@@ -189,28 +267,37 @@ class ButtonFrame(Frame):
         count = 0
 
         for i in range(len(rows)):
-            if self.ptf.b[f'labelsNo{rows[i]}{cols[i]}'].cget("text") == " ":
+            if self.ptf.b[f"labelsNo{rows[i]}{cols[i]}"].cget("text") == " ":
                 count = count + 1
 
         if count == len(rows):
             for i in range(len(rows)):
-                self.ptf.b['labelsNo' + str(rows[i]) + str(cols[i])] = Label(self.ptf, text=values[1],
-                                                                             borderwidth=1,
-                                                                             anchor=CENTER, relief=SOLID, width=30,
-                                                                             height=2,
-                                                                             background=color)
-                self.ptf.b['labelsNo' + str(rows[i]) + str(cols[i])].grid(row=rows[i], column=cols[i],
-                                                                          sticky=EW)
+                self.ptf.b["labelsNo" + str(rows[i]) + str(cols[i])] = Label(
+                    self.ptf,
+                    text=values[1],
+                    borderwidth=1,
+                    anchor=CENTER,
+                    relief=SOLID,
+                    width=30,
+                    height=2,
+                    background=color,
+                )
+                self.ptf.b["labelsNo" + str(rows[i]) + str(cols[i])].grid(
+                    row=rows[i], column=cols[i], sticky=EW
+                )
                 globals().update(self.ptf.b)
         else:
-            messagebox.showerror('Ders Saati Çakışması', 'Ders Saatleri Çakıştığı için Programa Eklenemedi!')
+            messagebox.showerror(
+                "Ders Saati Çakışması",
+                "Ders Saatleri Çakıştığı için Programa Eklenemedi!",
+            )
 
         rows.clear()
         cols.clear()
 
     def delete(self):
         selected = self.ltf.tree.focus()
-        values = self.ltf.tree.item(selected, 'values')
+        values = self.ltf.tree.item(selected, "values")
         count = 0
         lesson_hour = values[5].split()
         lesson_day = []
@@ -234,19 +321,28 @@ class ButtonFrame(Frame):
 
         count = 0
         for i in range(len(rows)):
-            if self.ptf.b[f'labelsNo{rows[i]}{cols[i]}'].cget("text") != " ":
+            if self.ptf.b[f"labelsNo{rows[i]}{cols[i]}"].cget("text") != " ":
                 count = count + 1
 
         if count == len(rows):
             for i in range(len(rows)):
-                self.ptf.b['labelsNo' + str(rows[i]) + str(cols[i])] = Label(self.ptf, text=" ", borderwidth=1,
-                                                                             anchor=CENTER, relief=SOLID, width=30,
-                                                                             height=2)
-                self.ptf.b['labelsNo' + str(rows[i]) + str(cols[i])].grid(row=rows[i], column=cols[i],
-                                                                          sticky=EW)
+                self.ptf.b["labelsNo" + str(rows[i]) + str(cols[i])] = Label(
+                    self.ptf,
+                    text=" ",
+                    borderwidth=1,
+                    anchor=CENTER,
+                    relief=SOLID,
+                    width=30,
+                    height=2,
+                )
+                self.ptf.b["labelsNo" + str(rows[i]) + str(cols[i])].grid(
+                    row=rows[i], column=cols[i], sticky=EW
+                )
                 globals().update(self.ptf.b)
         else:
-            messagebox.showerror('Ders Saati Ekli Değil', 'Ders Saatleri Ekli Olmadığından Çıkarılamadı!')
+            messagebox.showerror(
+                "Ders Saati Ekli Değil", "Ders Saatleri Ekli Olmadığından Çıkarılamadı!"
+            )
 
         rows.clear()
         cols.clear()
@@ -278,4 +374,3 @@ class App(Tk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
-
