@@ -11,7 +11,9 @@ import openpyxl
 
 
 class MenuBar(Menu):
+    """Creates a menu bar for the main window."""
     def __init__(self, container, ltf):
+        """Creates a menu bar for the main window."""
         super().__init__(container)
 
         self.ltf = ltf
@@ -21,6 +23,7 @@ class MenuBar(Menu):
         menubar.add_command(label="Aç", command=self.open_file)
 
     def open_file(self):
+        """Opens the file and creates a table."""
         filename = filedialog.askopenfilename(
             title="Dosya Aç", filetype=(("xlxs files", ".*xlsx"), ("All Files", "*."))
         )
@@ -61,6 +64,7 @@ class MenuBar(Menu):
 
 
 class ProgramTableFrame(Frame):
+    """Creates a table for the weekly program."""
     def __init__(self, container):
         super().__init__(container)
         self.grid(row=0, column=0, sticky=EW, padx=10, pady=10)
@@ -162,6 +166,7 @@ class ProgramTableFrame(Frame):
 
 
 class LessonsTableFrame(Frame):
+    """Creates the table frame for the lessons."""
     def __init__(self, container):
         super().__init__(container)
         self.columnconfigure(0, weight=1)
@@ -183,7 +188,9 @@ class LessonsTableFrame(Frame):
 
 
 class ButtonFrame(Frame):
+    """Handles the events of the buttons and their visual appearance."""
     def __init__(self, container, ltf, ptf):
+        """Creates the buttons and their grid layout."""
         super().__init__(container)
 
         self.ltf = ltf
@@ -200,6 +207,7 @@ class ButtonFrame(Frame):
         delete_button.grid(row=0, column=1, sticky=EW, padx=10, pady=10)
 
     def findrow(self, i):
+        """Finds the row of the timetable according to the time."""
         if i == "08:30":
             row = 1
         elif i == "09:30":
@@ -225,6 +233,7 @@ class ButtonFrame(Frame):
         return row
 
     def findcol(self, i):
+        """Finds the column of the timetable according to the day."""
         if i == "Pazartesi":
             col = 1
         elif i == "Salı":
@@ -238,6 +247,7 @@ class ButtonFrame(Frame):
         return col
 
     def add(self):
+        """Adds the selected lesson to the timetable."""
         selected = self.ltf.tree.focus()
         values = self.ltf.tree.item(selected, "values")
         count = 0
@@ -296,6 +306,7 @@ class ButtonFrame(Frame):
         cols.clear()
 
     def delete(self):
+        """Deletes the selected lesson from the timetable."""
         selected = self.ltf.tree.focus()
         values = self.ltf.tree.item(selected, "values")
         count = 0
@@ -349,7 +360,9 @@ class ButtonFrame(Frame):
 
 
 class App(Tk):
+    """It represents the main window of the application."""
     def __init__(self):
+        """Initialize the main window of the application."""
         super().__init__()
         self.title("Ana Sayfa")
         self.state("zoomed")
@@ -358,6 +371,7 @@ class App(Tk):
         self.__create_widgets()
 
     def __create_widgets(self):
+        """Create all the widgets for the main window."""
         program_table_frame = ProgramTableFrame(self)
         program_table_frame.grid(row=0, column=0)
 
