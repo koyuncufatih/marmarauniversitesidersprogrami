@@ -16,7 +16,7 @@ class App(Tk):
         super().__init__()
         self.title("Ana Sayfa")
         self.state("normal")
-        self.iconbitmap("icon.ico")
+        # self.iconbitmap("icon.ico")
         self.columnconfigure(0, weight=1)
         self.__create_widgets()
 
